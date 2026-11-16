@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Información de la mascota</title>
+    <link rel="stylesheet" href="Estilos/mundo.css">
+</head>
+<body>
+    <div class="mascota-container">
+        <div class="info-title">
+            <h2>Información de: <span id="nombreMascota"></span></h2>
+            <p><strong>Estado:</strong> <span id="estadoMascota"></span></p>
+            <!-- Contenedor para mensajes -->
+            <div id="mensaje" style="display: none; padding: 10px; border: 1px solid #ccc; margin-top: 10px;"></div>
+        </div>
+        <div class="pet-info">
+            <img id="imagenMascota" src="ImagenesT/fondoMundo.png" alt="Imagen de la mascota">
+
+            <div class="stats">
+                <div class="progress-container">
+                    <div class="stat-item">
+                    </div>
+                    <div class="stat-item">
+                        <strong>Nivel de Hambre:</strong>
+                        <progress id="barraHambre" value="0" max="100"></progress>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Nivel de Sueño:</strong>
+                        <progress id="barraSuenio" value="0" max="100"></progress>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Nivel de Felicidad:</strong>
+                        <progress id="barraFelicidad" value="0" max="100"></progress>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Nivel de Limpieza:</strong>
+                        <progress id="barraLimpieza" value="0" max="100"></progress>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button id="btnAlimentar">Alimentar</button>
+                    <button id="btnDormir">Dormir</button>
+                    <button id="btnJugar">Jugar</button>
+                    <button id="btnLimpiar">Limpiar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Audio controls -->
+        <div class="audio-controls">
+            <audio id="backgroundMusic" src="musicaFondo.mp3" loop></audio>
+            <button id="btnPlay"><img src="Iconos/play1.png" alt="Play"></button>
+            <button id="btnPause"><img src="Iconos/pausa.png" alt="Pause"></button>
+            <div class="volume-wrapper">
+                <img class="sound-icon" src="Iconos/volumen.png" alt="Icono de sonido">
+                <input type="range" id="volumeControl" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        const petFactory = PetFactory.getInstance();
+
+        // Crear la mascota según el tipo obtenido y mostrar su información
+        const tipoMascota = localStorage.getItem('tipoMascota');
+        const nombreMascota = localStorage.getItem('nombreMascota');
+
+        // Crear instancia de la mascota utilizando el objeto factory PetFactory
+        const mascota = petFactory.createPet(tipoMascota, nombreMascota);
+
+        // Crear instancia del ObservadorMascota
+        const observador = new ObservadorMascota();
+
+        // Agregar el observador a la lista de observadores de la mascota
+        mascota.agregarObservador(observador);
+
+        // Asignar los datos iniciales a los elementos HTML
+        observador.actualizar(mascota);
+
+        // Añadir eventos a los botones
+        document.getElementById('btnAlimentar').addEventListener('click', () => mascota.alimentar());
+        document.getElementById('btnDormir').addEventListener('click', () => mascota.dormir());
+        document.getElementById('btnJugar').addEventListener('click', () => mascota.jugar());
+        document.getElementById('btnLimpiar').addEventListener('click', () => mascota.limpiar());
+
+        // Control de audio
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const volumeControl = document.getElementById('volumeControl');
+
+        document.getElementById('btnPlay').addEventListener('click', () => backgroundMusic.play());
+        document.getElementById('btnPause').addEventListener('click', () => backgroundMusic.pause());
+        volumeControl.addEventListener('input', (event) => {
+            backgroundMusic.volume = event.target.value;
+        });
+
+        // Inicializar el volumen del audio al cargar la página
+        backgroundMusic.volume = volumeControl.value;
+    </script>
+</body>
+</html>

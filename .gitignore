@@ -1,0 +1,24 @@
+# Archivos del sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Entornos de desarrollo y editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs y temporales
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

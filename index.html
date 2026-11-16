@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Adoptar mascota</title>
+    <link rel="stylesheet" href="Estilos/index.css">
+
+</head>
+
+<body>
+    <div class="content-box">
+        <div class="welcome-text">
+            <h1>Wild Store</h1>
+        </div>
+        <h2>Aquí puedes adoptar mascotas de la selva</h2>
+        <h2>Ponle nombre a tu mascota: </h2>
+        <input type="text" id="nombreMascota" required><br>
+        <button class="boton submit" onclick="establecerNombre()">Establecer nombre</button>
+        <p id="mensajeNombre" class="mensaje"></p>
+        <h2>Por favor selecciona una mascota:</h2>
+        <div class="boton-container">
+            <button class="boton tigre" onclick="adoptarMascota('tigre')" disabled>Tigre</button>
+            <button class="boton leon" onclick="adoptarMascota('leon')" disabled>León</button>
+            <button class="boton mono" onclick="adoptarMascota('mono')" disabled>Mono</button>
+        </div>
+    </div>
+
+    <script>
+        function establecerNombre() {
+            const nombreMascota = document.getElementById('nombreMascota').value.trim();
+            const mensajeNombre = document.getElementById('mensajeNombre');
+
+            if (nombreMascota === "") {
+                mensajeNombre.textContent = "Por favor ingrese un nombre para su mascota.";
+                mostrarMensajeTemporal();
+                return;
+            }
+
+            localStorage.setItem('nombreMascota', nombreMascota);
+            mensajeNombre.textContent = "Nombre de la mascota establecido: " + nombreMascota;
+            mostrarMensajeTemporal();
+            habilitarBotones();
+        }
+
+        function adoptarMascota(tipo) {
+            const nombreMascota = localStorage.getItem('nombreMascota');
+            const mensajeNombre = document.getElementById('mensajeNombre');
+
+            if (!nombreMascota) {
+                mensajeNombre.textContent = "Por favor, establezca un nombre para su mascota antes de seleccionar una.";
+                mostrarMensajeTemporal();
+                return;
+            }
+
+            localStorage.setItem('tipoMascota', tipo);
+            window.location.href = 'mundo.html';
+        }
+
+        function habilitarBotones() {
+            const botones = document.querySelectorAll('.boton-container .boton');
+            let nombreMascota = localStorage.getItem('nombreMascota');
+
+            if (!nombreMascota) {
+                const mensajeNombre = document.getElementById('mensajeNombre');
+                mensajeNombre.textContent = "Por favor ingrese un nombre para su mascota.";
+                mostrarMensajeTemporal();
+                return;
+            }
+
+            botones.forEach(boton => {
+                boton.disabled = false;
+            });
+        }
+
+        function verificarNombre() {
+            const nombreMascota = localStorage.getItem('nombreMascota');
+            if (nombreMascota) {
+                habilitarBotones();
+            }
+        }
+
+        function mostrarMensajeTemporal() {
+            const mensajeNombre = document.getElementById('mensajeNombre');
+            setTimeout(() => {
+                mensajeNombre.textContent = "";
+            }, 3000); // El mensaje desaparecerá después de 3 segundos
+        }
+
+        window.onload = verificarNombre;
+    </script>
+</body>
+
+</html>

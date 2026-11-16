@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("../ImagenesT/Fondo.png"); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content-box {
+    background-color: rgba(83, 255, 91, 0.8); 
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+h1 {
+    color: #333;
+}
+
+.welcome-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.boton-container {
+    margin-top: 20px;
+}
+
+.boton{
+    padding: 10px 20px; 
+    font-size: 18px; 
+    margin: 10px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.boton:hover {
+    opacity: 0.8;
+}
+
+.boton.tigre {
+    background-color:#FFA500;
+}
+
+.boton.leon {
+    background-color: #FFFF00;
+}
+
+.boton.mono {
+    background-color:#964B00;
+}
+
+.boton.submit {
+    background-color: #4CAF50;
+}
+.mensaje {
+    color: red;
+    font-weight: bold;
+}

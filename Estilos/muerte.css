@@ -1,0 +1,50 @@
+body {
+            
+    background-image: url("../ImagenesT/cementerio.png");
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+h2{
+text-align: center;
+    font-size: 18px;
+    color: rgb(248, 252, 249); /* Changed color to white */
+    margin-top: 20px;
+    font-family: Arial, sans-serif; 
+
+}
+p {
+    text-align: center;
+    font-size: 18px;
+    color: rgb(240, 248, 242); /* Changed color to white */
+    margin-top: 20px;
+    font-family: Arial, sans-serif; /* Added font-family */
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: rgb(1, 2, 10); /* Changed color to white */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif; /* Added font-family */
+}
+
+/* Added button style for black background */
+button {
+    background-color: rgb(34, 173, 207);
+    border: 1px solid rgb(20, 4, 65);
+    transition: background-color 0.3s ease;
+}
+
+/* Added hover effect for button */
+button:hover {
+    background-color: #1a17b4;
+    color: rgb(227, 227, 231);
+}

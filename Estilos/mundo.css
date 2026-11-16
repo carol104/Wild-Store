@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../ImagenesT/fondoMundo.png");
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.mascota-container {
+    border-radius: 10px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    width: 98%;
+    max-width: 1200px;
+}
+
+h1 {
+    color: #0a0101;
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    margin-bottom: 15px;
+    color: #130909;
+    font-size: 18px;
+    text-align: left;
+}
+
+.progress-container, .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.progress-container {
+    margin-right: 20px;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #6af872;
+    /* Color de fondo de la barra */
+}
+
+.button-container button {
+    padding: 12px 24px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-right: -5px; /* Margen derecho negativo para superponer ligeramente */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #ffae00;
+    color: #000000;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:last-child {
+    margin-right: 0; /* Asegura que el último botón no tenga margen derecho negativo */
+}
+
+.button-container button:hover {
+    background-color: #ecc100;
+}
+
+button:hover {
+    background-color: #ecc100;
+}
+
+.pet-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+img#imagenMascota {
+    width: 500px;
+    /* Ancho fijo para la imagen */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+}
+
+.stats {
+    display: flex;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-item strong {
+    width: 150px; /* Ajusta este valor según tus necesidades */
+    margin-right: 10px;
+}
+
+.audio-controls {
+    position: absolute;
+    top: 50px; /* Ajusta esta distancia según la altura del estado de la mascota */
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio-controls button {
+    background-color: orange;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.audio-controls img {
+    width: 24px;
+    height: 24px;
+}
+
+#volumeControl {
+    cursor: pointer;
+}
+
+.audio-controls .volume-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: orange; /* Fondo naranja para el wrapper del control de volumen */
+    padding: 5px; /* Ajusta el relleno según sea necesario */
+    border-radius: 5px;
+}
+
+.audio-controls .volume-slider {
+    cursor: pointer;
+    width: 100px; /* Ajusta el ancho del control deslizante de volumen */
+    margin-left: 10px; /* Ajusta el espacio entre el icono y el control de volumen */
+}
